@@ -1,42 +1,83 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+* {
+  box-sizing: content-box;
+  margin: 0;
+  padding: 0;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+html {
+  font-size: 62.5%;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  background-color: #fdf8ea;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.heading-primary {
+  font-size: 4.8rem;
+  color: #8c1007;
 }
 
-.card {
-  padding: 2em;
+.header {
+  display: flex;
+  gap: 2.4rem;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 4rem;
 }
 
-.read-the-docs {
-  color: #888;
+.input-box {
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+  align-items: start;
+}
+
+.main-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+label {
+  font-size: 1.6rem;
+}
+
+.input-box input {
+  width: 30rem;
+  padding: 1rem 1.4rem;
+  border: none;
+  box-shadow: inset;
+  box-shadow: #00000015 1px 1px 20px 1px;
+  border-radius: 50px;
+  font-family: inherit;
+}
+
+.input-box input:focus {
+  outline: 2px solid #8c1007;
+}
+
+.input-section button {
+  padding: 1rem 1.5rem;
+  font-size: 1.4rem;
+  align-self: flex-end;
+  width: 20rem;
+  background-color: #8c1007;
+  border: none;
+  border-radius: 3px;
+  color: #fdf8ea;
+  transition: all 0.4s;
+}
+
+.input-section button:hover {
+  cursor: pointer;
+  background-color: #660b05;
+}
+
+.input-section {
+  gap: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
