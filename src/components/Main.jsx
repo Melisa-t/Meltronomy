@@ -132,6 +132,13 @@ function RecipeBox({ ingredients }) {
 function IngredientsList({ ingredients }) {
   return (
     <>
+      {ingredients.length === 0 && (
+        <p className="instructions">
+          If you want the input in any other language, add your language as an
+          ingredient. Because why not?
+        </p>
+      )}
+
       {ingredients.length > 0 && (
         <section className="ingredients-list">
           <h2 className="heading-secondary">Ingredients you have:</h2>

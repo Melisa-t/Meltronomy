@@ -169,3 +169,9 @@ label {
 .generated-recipe strong {
   margin: 1rem 0;
 }
+
+.instructions {
+  font-size: 2rem;
+  width: 50rem;
+  text-align: center;
+}
