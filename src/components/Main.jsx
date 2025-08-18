@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { getRecipeFromMistral } from "../ai";
 
 export default function Main() {
   const [ingredients, setIngredients] = useState([]);
@@ -36,7 +37,12 @@ function RecipeBox({ ingredients }) {
   const [showRecipe, setShowRecipe] = useState(false);
 
   function toggleRecipe() {
-    setShowRecipe(!showRecipe);
+    setShowRecipe(true);
+  }
+  async function handleGetRecipe(ingredients) {
+    const newRecipe = await getRecipeFromMistral(ingredients);
+    console.log(newRecipe);
+    toggleRecipe();
   }
 
   return (
@@ -49,8 +55,8 @@ function RecipeBox({ ingredients }) {
               <br></br>
               Clickity click!
             </p>
-            <button onClick={toggleRecipe}>
-              {showRecipe ? "Hide me!" : "Show me!"}
+            <button onClick={() => handleGetRecipe(ingredients)}>
+              Show me!
             </button>
           </div>
           {showRecipe && (

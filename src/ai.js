@@ -1,13 +1,14 @@
 import { InferenceClient } from "@huggingface/inference";
-import API_KEY from "/API_KEY.js";
+import { API_KEY } from "./API_KEY.js";
 const SYSTEM_PROMPT = `
 You are an assistant that receives a list of ingredients 
 that a user has and suggests a recipe they could make with
- some or all of those ingredients. You don't need to use every ingredient 
+ some or all of those ingredients. 
+You don't need to use every ingredient 
  they mention in your recipe. The recipe can include additional ingredients they didn't mention, 
- but try not to include too many extra ingredients.
-  If the user has a language in the list, render the response in that language.
- Format your response in HTML markdown to make it easier to render to a web page
+ but try not to include too many extra ingredients. 
+ Please reply in the same language ingredients are written in.
+ Format all of your response in HTML markdown to make it easier to render to a web page, don't forget to render it in user language.
 `;
 
 const hf = new InferenceClient(API_KEY);
@@ -21,12 +22,14 @@ export async function getRecipeFromMistral(ingredientsArr) {
         { role: "system", content: SYSTEM_PROMPT },
         {
           role: "user",
-          content: `I have ${ingredientsString}. Please give me a recipe you'd recommend I make!`,
+          content: `I have ${ingredientsString}. Please give me a recipe in my language that you'd recommend I make!`,
         },
       ],
       max_tokens: 1024,
     });
-    return response.choices[0].message.content;
+    const incomingRecipe = response.choices[0].message.content;
+    console.log(incomingRecipe);
+    return incomingRecipe;
   } catch (err) {
     console.error(err.message);
   }
