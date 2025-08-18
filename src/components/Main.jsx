@@ -31,7 +31,17 @@ function InputBox() {
 function RecipeBox() {
   return (
     <>
-      <article className="recipe-box"></article>
+      <section className="recipe-box">
+        <div className="get-recipe-box">
+          <p>
+            Ready to get your recipe?
+            <br></br>
+            Clickity click!
+          </p>
+          <button>Click!</button>
+        </div>
+        <article className="recipe"></article>
+      </section>
     </>
   );
 }

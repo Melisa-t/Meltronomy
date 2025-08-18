@@ -24,7 +24,9 @@ body {
   gap: 2.4rem;
   justify-content: center;
   align-items: center;
-  margin: 2rem 4rem;
+  padding: 2rem 0;
+  margin-bottom: 3rem;
+  box-shadow: #00000008 1px 1px 10px 1px;
 }
 
 .input-box {
@@ -32,6 +34,7 @@ body {
   row-gap: 0.5rem;
   column-gap: 2rem;
   grid-template-columns: 1fr 1fr;
+  margin: 2rem 0;
 }
 
 .main-section {
@@ -93,7 +96,7 @@ label {
 
 .heading-secondary {
   font-size: 1.8rem;
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
 }
 
 .ingredients {
@@ -101,4 +104,39 @@ label {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  margin-left: 3rem;
+}
+
+.get-recipe-box {
+  margin-top: 5rem;
+  padding: 4rem 8rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10rem;
+  background-color: #e0dbcf;
+  border-radius: 5px;
+  box-shadow: #00000008 1px 1px 20px 1px;
+}
+
+.get-recipe-box p {
+  font-size: 1.5rem;
+  color: rgb(62, 7, 3);
+  line-height: 2rem;
+  font-weight: 450;
+}
+
+.get-recipe-box button {
+  background-color: #8c1007;
+  padding: 1rem 3rem;
+  border-radius: 3px;
+  color: #fdf8ea;
+  border: none;
+  transition: all 0.4s;
+}
+
+.get-recipe-box button:hover {
+  cursor: pointer;
+  background-color: rgb(62, 7, 3);
 }
