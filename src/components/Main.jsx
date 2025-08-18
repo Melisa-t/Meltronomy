@@ -1,16 +1,20 @@
 import { useState } from "react";
 
 export default function Main() {
+  const [ingredients, setIngredients] = useState([]);
+
   return (
     <section className="main-section">
-      <InputBox></InputBox>
-      <RecipeBox></RecipeBox>
+      <InputBox
+        ingredients={ingredients}
+        setIngredients={setIngredients}
+      ></InputBox>
+      <RecipeBox ingredients={ingredients}></RecipeBox>
     </section>
   );
 }
 
-function InputBox() {
-  const [ingredients, setIngredients] = useState([]);
+function InputBox({ ingredients, setIngredients }) {
   function handleFormSubmit(FormData) {
     const ingredient = FormData.get("ingredient");
     if (!ingredient) return;
@@ -28,20 +32,22 @@ function InputBox() {
   );
 }
 
-function RecipeBox() {
+function RecipeBox({ ingredients }) {
   return (
     <>
-      <section className="recipe-box">
-        <div className="get-recipe-box">
-          <p>
-            Ready to get your recipe?
-            <br></br>
-            Clickity click!
-          </p>
-          <button>Click!</button>
-        </div>
-        <article className="recipe"></article>
-      </section>
+      {ingredients.length >= 3 && (
+        <section className="recipe-box">
+          <div className="get-recipe-box">
+            <p>
+              Ready to get your recipe?
+              <br></br>
+              Clickity click!
+            </p>
+            <button>Click!</button>
+          </div>
+          <article className="recipe"></article>
+        </section>
+      )}
     </>
   );
 }
