@@ -44,9 +44,11 @@ function InputBox({ ingredients, setIngredients, setRecipe, setShowRecipe }) {
       <form action={handleFormSubmit} className="input-box">
         <input name="ingredient" type="text" placeholder="e.g. oregano" />
         <button>Add Ingredients</button>
-        <button onClick={resetAll} type="button">
-          Reset
-        </button>
+        {ingredients.length > 0 && (
+          <button onClick={resetAll} type="button">
+            Reset
+          </button>
+        )}
       </form>
 
       <IngredientsList ingredients={ingredients}></IngredientsList>
