@@ -41,7 +41,6 @@ export default function RecipeBox({
     const newRecipe = await getRecipeFromMistral(ingredients);
     setSpinnerLoading(false);
     setRecipe(DOMPurify.sanitize(newRecipe));
-    console.log(newRecipe);
     toggleRecipe();
   }
 
@@ -61,7 +60,7 @@ export default function RecipeBox({
           </div>
           <Spinner></Spinner>
           {showRecipe && (
-            <article className="generated-recipe">
+            <article className="generated-recipe" id="generated-recipe">
               <h2>Mel Chef Recommends:</h2>
               <div
                 className="recipe"

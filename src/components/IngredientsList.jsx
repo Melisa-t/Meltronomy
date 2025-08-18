@@ -2,7 +2,7 @@ export default function IngredientsList({ ingredients }) {
   return (
     <>
       {ingredients.length === 0 && (
-        <p className="instructions">
+        <p className="warning">
           If you want the input in any other language, just add your ingredients
           in the language.
           <br></br>
