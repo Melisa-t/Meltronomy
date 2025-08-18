@@ -154,7 +154,9 @@ label {
 .generated-recipe {
   margin: 5rem 0;
   font-size: 1.4rem;
-  width: 100rem;
+  display: flex;
+  flex-direction: column;
+  width: 70rem;
 }
 
 .generated-recipe ul,
