@@ -4,23 +4,39 @@ import DOMPurify from "dompurify";
 
 export default function Main() {
   const [ingredients, setIngredients] = useState([]);
+  const [recipe, setRecipe] = useState(` `);
+  const [showRecipe, setShowRecipe] = useState(false);
 
   return (
     <section className="main-section">
       <InputBox
         ingredients={ingredients}
         setIngredients={setIngredients}
+        setRecipe={setRecipe}
+        setShowRecipe={setShowRecipe}
       ></InputBox>
-      <RecipeBox ingredients={ingredients}></RecipeBox>
+      <RecipeBox
+        ingredients={ingredients}
+        setRecipe={setRecipe}
+        recipe={recipe}
+        setShowRecipe={setShowRecipe}
+        showRecipe={showRecipe}
+      ></RecipeBox>
     </section>
   );
 }
 
-function InputBox({ ingredients, setIngredients }) {
+function InputBox({ ingredients, setIngredients, setRecipe, setShowRecipe }) {
   function handleFormSubmit(FormData) {
     const ingredient = FormData.get("ingredient");
     if (!ingredient) return;
     setIngredients([...ingredients, ingredient]);
+  }
+
+  function resetAll() {
+    setIngredients([]);
+    setRecipe(` `);
+    setShowRecipe(false);
   }
 
   return (
@@ -28,23 +44,30 @@ function InputBox({ ingredients, setIngredients }) {
       <form action={handleFormSubmit} className="input-box">
         <input name="ingredient" type="text" placeholder="e.g. oregano" />
         <button>Add Ingredients</button>
+        <button onClick={resetAll} type="button">
+          Reset
+        </button>
       </form>
+
       <IngredientsList ingredients={ingredients}></IngredientsList>
     </section>
   );
 }
 
-function RecipeBox({ ingredients }) {
-  const [showRecipe, setShowRecipe] = useState(false);
-  const [recipe, setRecipe] = useState(` `);
-
+function RecipeBox({
+  ingredients,
+  setRecipe,
+  recipe,
+  setShowRecipe,
+  showRecipe,
+}) {
   function toggleRecipe() {
     setShowRecipe(true);
   }
   async function handleGetRecipe(ingredients) {
     const newRecipe = await getRecipeFromMistral(ingredients);
-    console.log(newRecipe);
     setRecipe(DOMPurify.sanitize(newRecipe));
+    console.log(newRecipe);
     toggleRecipe();
   }
 
@@ -66,7 +89,7 @@ function RecipeBox({ ingredients }) {
             <article className="generated-recipe">
               <h2>Mel Chef Recommends:</h2>
               <div
-                className="recipe-box"
+                className="recipe"
                 dangerouslySetInnerHTML={{ __html: recipe }}
               ></div>
             </article>
@@ -82,8 +105,10 @@ function IngredientsList({ ingredients }) {
     <>
       {ingredients.length === 0 && (
         <p className="instructions">
-          If you want the input in any other language, add your language as an
-          ingredient. Because why not?
+          If you want the input in any other language, just add your ingredients
+          in the language. Or anything else. Want a 300 calories snack? Type in
+          "300 calories snack." Because why not? P.S: Since it's AI translating,
+          foreign language is quite awful.
         </p>
       )}
 
