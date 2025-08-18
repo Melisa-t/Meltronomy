@@ -180,3 +180,34 @@ label {
   text-align: center;
   line-height: 3rem;
 }
+
+.footer {
+  margin: 2rem 0;
+  font-size: 1.4rem;
+  color: #660b05;
+  font-weight: 500;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(-10px, 0);
+}
+
+.footer a,
+.footer a:visited,
+.footer a:link {
+  text-decoration: none;
+  color: #000000;
+}
+
+.footer a:hover,
+.footer a:active {
+  text-decoration: none;
+  color: #8c1007;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
