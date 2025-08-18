@@ -5,8 +5,10 @@ import Main from "./components/Main.jsx";
 function App() {
   return (
     <>
-      <Header />
-      <Main />
+      <div className="container">
+        <Header />
+        <Main />
+      </div>
     </>
   );
 }

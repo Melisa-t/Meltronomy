@@ -36,6 +36,7 @@ body {
 
 .main-section {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -85,6 +86,19 @@ label {
 .input-section {
   gap: 3rem;
   display: flex;
-  align-items: center;
-  justify-content: flex-start;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.heading-secondary {
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+}
+
+.ingredients {
+  font-size: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
