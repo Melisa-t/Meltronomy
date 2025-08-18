@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { getRecipeFromMistral } from "../ai";
-import DOMPurify from "dompurify";
+import InputBox from "./InputBox.jsx";
+import RecipeBox from "./RecipeBox.jsx";
 
 export default function Main() {
   const [ingredients, setIngredients] = useState([]);
@@ -23,106 +23,5 @@ export default function Main() {
         showRecipe={showRecipe}
       ></RecipeBox>
     </section>
-  );
-}
-
-function InputBox({ ingredients, setIngredients, setRecipe, setShowRecipe }) {
-  function handleFormSubmit(FormData) {
-    const ingredient = FormData.get("ingredient");
-    if (!ingredient) return;
-    setIngredients([...ingredients, ingredient]);
-  }
-
-  function resetAll() {
-    setIngredients([]);
-    setRecipe(` `);
-    setShowRecipe(false);
-  }
-
-  return (
-    <section className="input-section">
-      <form action={handleFormSubmit} className="input-box">
-        <input name="ingredient" type="text" placeholder="e.g. oregano" />
-        <button>Add Ingredients</button>
-        {ingredients.length > 0 && (
-          <button onClick={resetAll} type="button">
-            Reset
-          </button>
-        )}
-      </form>
-
-      <IngredientsList ingredients={ingredients}></IngredientsList>
-    </section>
-  );
-}
-
-function RecipeBox({
-  ingredients,
-  setRecipe,
-  recipe,
-  setShowRecipe,
-  showRecipe,
-}) {
-  function toggleRecipe() {
-    setShowRecipe(true);
-  }
-  async function handleGetRecipe(ingredients) {
-    const newRecipe = await getRecipeFromMistral(ingredients);
-    setRecipe(DOMPurify.sanitize(newRecipe));
-    console.log(newRecipe);
-    toggleRecipe();
-  }
-
-  return (
-    <>
-      {ingredients.length >= 3 && (
-        <section className="recipe-box">
-          <div className="get-recipe-box">
-            <p>
-              Ready to get your recipe?
-              <br></br>
-              Clickity click!
-            </p>
-            <button onClick={() => handleGetRecipe(ingredients)}>
-              Show me!
-            </button>
-          </div>
-          {showRecipe && (
-            <article className="generated-recipe">
-              <h2>Mel Chef Recommends:</h2>
-              <div
-                className="recipe"
-                dangerouslySetInnerHTML={{ __html: recipe }}
-              ></div>
-            </article>
-          )}
-        </section>
-      )}
-    </>
-  );
-}
-
-function IngredientsList({ ingredients }) {
-  return (
-    <>
-      {ingredients.length === 0 && (
-        <p className="instructions">
-          If you want the input in any other language, just add your ingredients
-          in the language. Or anything else. Want a 300 calories snack? Type in
-          "300 calories snack." Because why not? P.S: Since it's AI translating,
-          foreign language is quite awful.
-        </p>
-      )}
-
-      {ingredients.length > 0 && (
-        <section className="ingredients-list">
-          <h2 className="heading-secondary">Ingredients you have:</h2>
-          <ul className="ingredients">
-            {ingredients.length > 0 &&
-              ingredients.map((ing) => <li key={ing}>{ing}</li>)}
-          </ul>
-        </section>
-      )}
-    </>
   );
 }
