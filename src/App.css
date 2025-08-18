@@ -42,6 +42,7 @@ body {
 
 label {
   font-size: 1.6rem;
+  margin-bottom: 0.5rem;
 }
 
 .input-box input {
@@ -55,7 +56,11 @@ label {
 }
 
 .input-box input:focus {
-  outline: 2px solid #8c1007;
+  outline: 3px solid #8c1007;
+}
+
+.input-section button:focus {
+  outline: 3px solid #000000;
 }
 
 .input-section button {
