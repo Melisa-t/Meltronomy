@@ -15,6 +15,7 @@ export default function Main() {
         setRecipe={setRecipe}
         setShowRecipe={setShowRecipe}
       ></InputBox>
+
       <RecipeBox
         ingredients={ingredients}
         setRecipe={setRecipe}
