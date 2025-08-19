@@ -35,9 +35,11 @@ export async function getRecipeFromMistral(ingredientsArr) {
       ],
       max_tokens: 1024,
     });
+    if (!response.ok)
+      throw new Error(`Could not fetch information. Please try again!`);
     const incomingRecipe = response.choices[0].message.content;
     return incomingRecipe;
   } catch (err) {
-    return `<p>${err}. Try again!</p>`;
+    return `<p>${err}</p>`;
   }
 }
