@@ -9,9 +9,9 @@ You don't need to use every ingredient
  they mention in your recipe. The recipe can include additional ingredients they didn't mention, 
  but try not to include too many extra ingredients. 
 Reply in the same language most ingredients are written in, if a language is added as ingredient, 
-use that language. If no language specified, or most ingredients are in English, use english.
+use that language. If no language specified, or most ingredients are in English, use english and do not translate.
 Abide by nutritional values and dietary restrictions if entered
-Format all of your response in HTML markdown to make it easier to render to a web page, 
+Format all of your response in HTML markdown ready to be rendered in a web page, 
 render it translated into user language. 
 . 
 
@@ -29,7 +29,8 @@ export async function getRecipeFromMistral(ingredientsArr) {
         {
           role: "user",
           content: `I have ${ingredientsString}. 
-          Please give me a recipe translated into my language. If I entered them, according to dietary needs and nutritional values!`,
+          Please give me a recipe translated into my language if I entered a language.
+            According to dietary needs and nutritional values if I entered!`,
         },
       ],
       max_tokens: 1024,
