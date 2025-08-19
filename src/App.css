@@ -221,6 +221,13 @@ html {
   .generated-recipe {
     width: 50rem;
   }
+
+  .input-box {
+    column-gap: 0rem;
+  }
+  .warning {
+    width: 35rem;
+  }
 }
 
 @media (max-width: 34em) {
@@ -283,6 +290,11 @@ html {
   }
   .generated-recipe {
     width: 25rem;
+  }
+
+  .warning {
+    width: 25rem;
+    font-size: 1.8rem;
   }
 }
 
