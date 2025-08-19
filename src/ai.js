@@ -36,9 +36,8 @@ export async function getRecipeFromMistral(ingredientsArr) {
       max_tokens: 1024,
     });
     const incomingRecipe = response.choices[0].message.content;
-    console.log(incomingRecipe, `ailol`);
     return incomingRecipe;
   } catch (err) {
-    console.error(err.message);
+    return `<p>${err}. Try again!</p>`;
   }
 }
