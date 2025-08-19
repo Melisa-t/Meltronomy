@@ -291,3 +291,19 @@ html {
     font-size: 48%;
   }
 }
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e0dbcf;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #8c1007;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #660b05;
+}
