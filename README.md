@@ -24,8 +24,6 @@ AI-powered recipe generator built with **React**. Add ingredients, reset your li
 
 ### UI Preview
 
-> Example screens to give you a sense of the app:
-
 - **Ingredient Input** – enter items and build your list.  
 - **Recipe Generation** – recipes displayed after API call.  
 - **Reset State** – clear list and start over with a single click.  
